@@ -68,7 +68,7 @@ def expires_from_cache_control(header, current_time):
     # Cache control header values are made of multiple comma separated fields.
     # Splitting them like this is probably a bad idea, but I'm going to roll with
     # it for now. We'll come back to it.
-    fields = header.split(', ')
+    fields = [field.strip() for field in header.split(',')]
     duration = None
 
     for field in fields:
