@@ -82,6 +82,9 @@ def expires_from_cache_control(header, current_time):
             _, duration = field.split('=')
             duration = int(duration)
 
+    if not duration:
+        return
+
     interval = timedelta(seconds=int(duration))
 
     return current_time + interval
